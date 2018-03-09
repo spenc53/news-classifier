@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-from sklearn.feature_extraction.text import CountVectorizer
 import requests
 
 headers = {'User-Agent':'Mozilla/5.0'}
@@ -18,16 +17,3 @@ for p in soup.find_all('p'):
 	text = text + '\n' + p.getText()
 
 
-
-# text needs to be in an array
-text = [text]
-# create the transform
-vectorizer = CountVectorizer()
-# tokenize and build vocab
-vectorizer.fit(text)
-# encode document
-vector = vectorizer.transform(text)
-# summarize encoded vector
-# print(vector.shape)
-# print(type(vector))
-print(vector.toarray())
