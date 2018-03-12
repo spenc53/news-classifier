@@ -7,6 +7,9 @@ import pandas as pd
 
 from classifiers.naive_classifier import NaiveBayesClassifier
 
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
+
 
 class NewsClassifier:
 
@@ -18,6 +21,30 @@ class NewsClassifier:
 
         self.read_links()
         X, Y = self.get_csv_data()
+
+
+
+        # COUNT VECTORIZER TO GET COUNTS OF WORD APPEARANCE
+        # count_vect = CountVectorizer()
+        # X_train_counts = count_vect.fit_transform(X)
+        # X_train_counts.shape
+
+        # # CONVERTS COUNTS TO FREQUENCIES
+        # names = count_vect.get_feature_names()
+        # tf_transformer = TfidfTransformer(use_idf=False).fit(X_train_counts)
+        # X_train_tf = tf_transformer.transform(X_train_counts)
+
+        # # PRINTS OUT "WORD: FREQUENCY"
+        # for i in X_train_tf:
+        #     for j in i:
+        #         s = 0
+        #         for index in range(len(j.indices)):
+        #             print(names[j.indices[index]],": ", j.data[index])
+        #             s += j.data[index]
+        #         print(s)
+        #         break
+        #     break
+
 
 
     def get_classifier(self, classifier_name):
