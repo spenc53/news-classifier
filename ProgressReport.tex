@@ -9,6 +9,8 @@
 \usepackage{fixltx2e}
 \usepackage{hyperref}
 \usepackage{color}
+\usepackage{setspace}
+\doublespacing
 
 \setlength{\parindent}{1.4em}
 
@@ -37,24 +39,24 @@
       \begin{itemize}
         \item The problem that we are solving is allowing machine learning algorithms to take news 
         articles and identify the topics of them. This is applicable to sites that suggest articles 
-        for users to read. For example, google will suggest articles for their users based on articles 
-        that they have read in the past. By using classification, google would be able to suggest 
-        articles that are of the same topic as to what a user has read before.
+        for users to read. For example, Google will suggest articles for users based on articles 
+        they have read in the past. By using classification, Google would be able to suggest 
+        articles that are of the same topic as what a user has read before.
       \end{itemize}
     \item What machine learning model we are initially trying to learn with
       \begin{itemize}
         \item The machine learning algorithms we are planning on using include Na{\"i}ve Bayes, Subject 
         Vector Machines, and Grid Search. All of these learning algorithms can be applied to text 
-        classification. We plan on training on all three to see which one gives the best overall accuracy 
-        and then, optimizing the chosen machine learning algorithm.
+        classification. We plan on training on all three of them to see which one gives the best overall 
+        accuracy, and then optimizing the best machine learning algorithm.
       \end{itemize}
     \item How and from where we are gathering data
       \begin{itemize}
         \item We will be gathering data from many different news websites, including 
         www.washingtonpost.com and www.cnn.com. To get this data, we will have to manually identify 
-        website articles and their classification by hand. After this is done,  a simple python script 
-        will fetch the article and store it as “article text, classification” in a CSV. Below is an 
-        instance of our data.
+        website articles and their classification. After this is done, a simple Python script 
+        will fetch the article and store it as ``article text, classification'' in a spreadsheet file. 
+        The next section includes an instance of our data.
       \end{itemize}
     \item A description of our data set including:
       \begin{itemize}
@@ -63,23 +65,23 @@
             \item
             \begin{tabular}{|cc|}
               \hline
-              Article                                                           & Classification\\
+              Article                                                             & Classification\\
               \hline
-              “Like the Huawei Mate 10 Pro that we reviewed earlier this week…” & Technology\\
-              “President Trump on Thursday doubled down on his idea...”         & Political\\
+              “Like the Huawei Mate 10 Pro that we reviewed earlier this week...” & Technology\\
+              “President Trump on Thursday doubled down on his idea...”           & Political\\
               \hline
             \end{tabular}
           \end{itemize}
         \item How many instances and features we plan to have in our final data set
           \begin{itemize}
             \item 
-            We hope to have 400 instances to train and test on. The features that we will have will 
-            differ from what our original dataset contains. This is because we will need to transform it 
-            into a different form before handing it to our Machine Learning Algorithm. The text from the 
-            articles will be passed to Sklearn which will use Bucket of Words to obtain word counts for 
-            each article. This data will then be used for training the data on. This means that as we 
-            gather more articles, the final set of features will change due to the inclusion of new 
-            words from different articles. Below is an example of what the the Machine Learning algorithm 
+            We hope to have 400 instances to train and test on, and the features we will have will 
+            differ from what our original dataset contains. This is because we will need to transform the 
+            data into a different form before handing it to our chosen machine learning algorithm. The text from 
+            the articles will be passed to Sklearn which will use Bucket of Words to obtain word counts 
+            for each article. This data will then be used for training the model. Thus, as 
+            we gather more articles, the final set of features will change due to the inclusion of new 
+            words from different articles. Below is an example of what the the machine learning algorithm 
             will actually use to train.
       
             \medskip
@@ -97,14 +99,14 @@
       \end{itemize}
       \item Brief discussion of plans and schedule to finish the project
       \begin{itemize}
-        \item March 13th, 2018 - Submit Progress report
-        \item March 16th, 2018 - Finalize list of website articles and their classification
-        \item March 18th, 2018 - Data processing finished (grabbing data from web pages)
-        \item March 23rd, 2018 - Choose Machine Learning Algorithm to use from original ones used
-        \item March 30th, 2018 - Finished fine tuning of chosen Machine Learning Algorithm
-        \item April 6th, 2018 - Complete Final draft of Project write up and Presentation
-        \item April 9th, 2018 - Final Editing of the project write up and Presentation
-        \item April 10th, 2018 - Project Due
+        \item March 13th, 2018 - Submitted Progress report
+        \item March 16th, 2018 - Finalized list of website articles and their classifications
+        \item March 19th, 2018 - Finished data processing (grabbing data from web pages)
+        \item March 23rd, 2018 - Chose machine learning algorithm to use from original list
+        \item March 30th, 2018 - Finished fine tuning of chosen machine learning algorithm
+        \item April 6th, 2018 - Completed final draft of project write up and presentation
+        \item April 9th, 2018 - Finished final Editing of the project write up and presentation
+        \item April 10th, 2018 - Submitted final project
       \end{itemize}
   \end{itemize}
 \end{document}
