@@ -20,9 +20,10 @@ class NewsClassifier:
         classifier = self.get_classifier(classifier_type)
 
         # IF WE NEED TO RE-GET THE LINKS RUN THE FOLLOWING LINE.
-        # self.read_links()
+        self.read_links()
 
         X, Y = self.get_csv_data()
+        classifier.train(X, Y)
 
 
 
@@ -80,7 +81,7 @@ class NewsClassifier:
 
     def get_csv_data(self):
 
-        data = pd.read_csv('datasets' + os.path.sep + 'training.csv', encoding='latin-1')  # text in column 1, classifier in column 2.
+        data = pd.read_csv('datasets' + os.path.sep + 'training.csv', encoding='utf-8')  # text in column 1, classifier in column 2.
         numpy_array = data.as_matrix()
         X = numpy_array[:, 1]
         Y = numpy_array[:, 2]
@@ -88,7 +89,7 @@ class NewsClassifier:
         return X, Y
 
     def read_links(self):
-        csv_data = pd.read_csv('datasets' + os.path.sep + 'links.csv', encoding='latin-1')  # text in column 1, classifier in column 2.
+        csv_data = pd.read_csv('datasets' + os.path.sep + 'links.csv', encoding='utf-8')  # text in column 1, classifier in column 2.
         numpy_array = csv_data.as_matrix()
         links = numpy_array[:, 0]
         classification = numpy_array[:, 1]
