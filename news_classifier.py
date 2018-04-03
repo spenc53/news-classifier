@@ -2,7 +2,7 @@ import argparse
 import os
 import requests
 from bs4 import BeautifulSoup
-from sklearn.datasets import fetch_20newsgroups
+# from sklearn.datasets import fetch_20newsgroups
 import pandas as pd
 
 from classifiers.naive_classifier import NaiveBayesClassifier
@@ -19,31 +19,10 @@ class NewsClassifier:
 
         classifier = self.get_classifier(classifier_type)
 
-        self.read_links()
+        # IF WE NEED TO RE-GET THE LINKS RUN THE FOLLOWING LINE.
+        # self.read_links()
+
         X, Y = self.get_csv_data()
-
-
-
-        # COUNT VECTORIZER TO GET COUNTS OF WORD APPEARANCE
-        # count_vect = CountVectorizer()
-        # X_train_counts = count_vect.fit_transform(X)
-        # X_train_counts.shape
-
-        # # CONVERTS COUNTS TO FREQUENCIES
-        # names = count_vect.get_feature_names()
-        # tf_transformer = TfidfTransformer(use_idf=False).fit(X_train_counts)
-        # X_train_tf = tf_transformer.transform(X_train_counts)
-
-        # # PRINTS OUT "WORD: FREQUENCY"
-        # for i in X_train_tf:
-        #     for j in i:
-        #         s = 0
-        #         for index in range(len(j.indices)):
-        #             print(names[j.indices[index]],": ", j.data[index])
-        #             s += j.data[index]
-        #         print(s)
-        #         break
-        #     break
 
 
 
@@ -119,7 +98,13 @@ class NewsClassifier:
 
 
         for i in range(len(links)):
-            r = requests.get(links[i], headers=headers)
+            print(i)
+            r = ""
+            try:
+                r = requests.get(links[i], headers=headers)
+            except Exception: 
+                print(links[i])
+                continue
             data = r.text
             soup = BeautifulSoup(data, 'lxml')
             text = ''
