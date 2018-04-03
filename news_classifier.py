@@ -20,7 +20,7 @@ class NewsClassifier:
         classifier = self.get_classifier(classifier_type)
 
         # IF WE NEED TO RE-GET THE LINKS RUN THE FOLLOWING LINE.
-        self.read_links()
+        # self.read_links()
 
         X, Y = self.get_csv_data()
         classifier.train(X, Y)
