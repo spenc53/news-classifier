@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 from classifiers.naive_classifier import NaiveBayesClassifier
+from classifiers.svm_classifier import SVMClassifier
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
@@ -29,8 +30,8 @@ class NewsClassifier:
 
     def get_classifier(self, classifier_name):
         modelmap = {
-            "naive": NaiveBayesClassifier()
-            # "svm": SVMClassifier(),
+            "naive": NaiveBayesClassifier(),
+             "svm" : SVMClassifier()
             # "grid": GridSearchClassifier()
         }
         if classifier_name in modelmap:

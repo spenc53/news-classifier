@@ -5,3 +5,4 @@ scipy
 pandas
 bs4
 lxml
+nltk
