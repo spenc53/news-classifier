@@ -1,5 +1,7 @@
 from sklearn.cross_validation import train_test_split
 
+import numpy as np
+
 from sklearn.svm import SVC
 from sklearn.svm import NuSVC
 from sklearn.svm import LinearSVC
@@ -15,6 +17,7 @@ from nltk.corpus import stopwords
 import string
 
 from .utils import stemming_tokenizer
+from .utils import filter_dataset_nan
 
 # Use LinearSVC and NuSVC. Also figure out why this is getting 25% accuracy
 
@@ -32,6 +35,7 @@ class SVMClassifier:
         self.key = 'default'
 
     def train(self, x, y):
+        x, y = filter_dataset_nan(x, y)
 
         classifier = Pipeline([
             ('vectorizer', TfidfVectorizer(tokenizer=stemming_tokenizer,
