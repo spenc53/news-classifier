@@ -7,10 +7,8 @@ import pandas as pd
 import numpy as np
 
 from classifiers.naive_classifier import NaiveBayesClassifier
+from classifiers.random_forest_classifier import RandomForestClf
 from classifiers.svm_classifier import SVMClassifier
-
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
 
 
 class NewsClassifier:
@@ -40,6 +38,7 @@ class NewsClassifier:
         modelmap = {
             "naive": NaiveBayesClassifier(),
              "svm" : SVMClassifier(),
+            'random': RandomForestClf()
             # "grid": GridSearchClassifier()
         }
         if classifier_name in modelmap:
@@ -51,7 +50,7 @@ class NewsClassifier:
         parser = argparse.ArgumentParser(description='News Articles Classifier Manager')
 
         parser.add_argument('-C', required=True,
-                            choices=['naive', 'svm', 'grid'],
+                            choices=['naive', 'svm', 'grid', 'random'],
                             help='Classifier')
         return parser
 
