@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 # from sklearn.datasets import fetch_20newsgroups
 import pandas as pd
+import numpy as np
 
 from classifiers.naive_classifier import NaiveBayesClassifier
 from classifiers.svm_classifier import SVMClassifier
@@ -24,14 +25,21 @@ class NewsClassifier:
         # self.read_links()
 
         X, Y = self.get_csv_data()
-        classifier.train(X, Y)
+
+        accuracies = list()
+        for i in range(5):
+            accuracy = classifier.train(X, Y)
+            print('Test', i, 'Accuracy', accuracy)
+            accuracies.append(accuracy)
+
+        print('Mean Accuracy', np.mean(accuracies))
 
 
 
     def get_classifier(self, classifier_name):
         modelmap = {
             "naive": NaiveBayesClassifier(),
-             "svm" : SVMClassifier()
+             "svm" : SVMClassifier(),
             # "grid": GridSearchClassifier()
         }
         if classifier_name in modelmap:

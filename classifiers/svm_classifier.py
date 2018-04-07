@@ -21,7 +21,15 @@ from .utils import stemming_tokenizer
 class SVMClassifier:
 
     def __init__(self):
-        pass
+        self.c = 10
+        self.tolerance=1e-3
+        self.kernel = 'linear'
+        self.model_map = {
+                            'default' : SVC(C=self.c, kernel=self.kernel, decision_function_shape='ovr', tol=self.tolerance),
+                            'nu' : NuSVC(kernel=self.kernel),
+                            'linear' : LinearSVC(C=self.c)
+                         }
+        self.key = 'default'
 
     def train(self, x, y):
 
@@ -29,12 +37,26 @@ class SVMClassifier:
             ('vectorizer', TfidfVectorizer(tokenizer=stemming_tokenizer,
                                            stop_words=stopwords.words('english') + list(string.punctuation),
                                            min_df = 5)),
-            ('classifier', SVC())
+            ('classifier', self.model_map[self.key])
         ])
 
-        x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.25, random_state=33)
+        x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.25)
 
         classifier.fit(x_train, y_train)
 
-        print("Accuracy: %s" % classifier.score(x_test, y_test))
-        return classifier
+        return classifier.score(x_test, y_test)
+
+class SVMLinearClassifier(SVMClassifier):
+
+    def __init__(self):
+        super(SVMLinearClassifier, self).__init__()
+
+        self.key = 'linear'
+
+class SVMNuClassifier(SVMClassifier):
+
+    def __init__(self):
+        super(SVMNuClassifier, self).__init__()
+
+        self.key = 'nu'
+
