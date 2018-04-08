@@ -25,7 +25,6 @@ class NewsClassifier:
 
         X, Y = self.get_csv_data()
         X, Y = filter_dataset_nan(X, Y)
-        print(len(X))
 
         accuracies = list()
         for i in range(5):
