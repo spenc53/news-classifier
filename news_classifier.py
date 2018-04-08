@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 # from sklearn.datasets import fetch_20newsgroups
 import pandas as pd
 import numpy as np
+from classifiers.utils import filter_dataset_nan
 
 from classifiers.naive_classifier import NaiveBayesClassifier
 from classifiers.random_forest_classifier import RandomForestClf
@@ -23,6 +24,8 @@ class NewsClassifier:
         # self.read_links()
 
         X, Y = self.get_csv_data()
+        X, Y = filter_dataset_nan(X, Y)
+        print(len(X))
 
         accuracies = list()
         for i in range(5):
