@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section.1}{Abstract}{}% 1
+\BOOKMARK [1][-]{section.2}{Introduction}{}% 2
+\BOOKMARK [1][-]{section.3}{Methods and Data}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Data Sources}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Data Instance}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Models}{section.3}% 6
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Na\357ve Bayes}{subsection.3.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Random Forest}{subsection.3.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Support Vector Machine \(SVM\)}{subsection.3.3}% 9
+\BOOKMARK [1][-]{section.4}{Initial Results}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{Na\357ve Bayes}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Random Forest}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.3}{Support Vector Machine \(SVM\)}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.4}{Overall}{section.4}% 14
+\BOOKMARK [1][-]{section.5}{Model Improvement}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Na\357ve Bayes}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{Random Forest}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.3}{SVM}{section.5}% 18
+\BOOKMARK [1][-]{section.6}{Final Results}{}% 19
+\BOOKMARK [1][-]{section.7}{Future Work}{}% 20
