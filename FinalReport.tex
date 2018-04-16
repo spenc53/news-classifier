@@ -1,56 +1,60 @@
-\documentclass[fleqn,11pt]{article}
+\typeout{IJCAI-09 Instructions for Authors}
+\documentclass{article}
 
 \usepackage[letterpaper,margin=0.75in]{geometry}
-\usepackage{amsmath}
-\usepackage{booktabs}
+% \usepackage{amsmath}
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+% \usepackage{listings}
+% \usepackage{mathtools}
+% \usepackage{fixltx2e}
+% \usepackage{hyperref}
+% \usepackage{color}
+% \usepackage{setspace}
+% The file ijcai09.sty is the style file for IJCAI-09 (same as ijcai07.sty).
+\usepackage{ijcai09}
+% Use the postscript times font!
+\usepackage{times}
 \usepackage{graphicx}
-\usepackage{listings}
-\usepackage{mathtools}
-\usepackage{fixltx2e}
-\usepackage{hyperref}
-\usepackage{color}
-\usepackage{setspace}
-\usepackage{multicol}
-
-% \setlength{\parindent}{1.4em}
+% \usepackage{url}
+% \usepackage{biblatex}
+% \bibliography{final_report.bib}
 
 \begin{document}
-    \lstset{
-    language=Python,
-    basicstyle=\small,          % print whole listing small
-    keywordstyle=\bfseries,
-    identifierstyle=,           % nothing happens
-    commentstyle=,              % white comments
-    stringstyle=\ttfamily,      % typewriter type for strings
-    showstringspaces=false,     % no special string spaces
-    numbers=left,
-    numberstyle=\tiny,
-    numbersep=5pt,
-    frame=tb,
-    }
-
-    \title{Progress Report}
+    \title{News Classifier Group Project}
     \author{Wilson Fearn, Andrew Hale, Victor Lazaro, Spencer Seeger}
     \date{April 10, 2018}
     \maketitle
-    \begin{multicols}{2}
     \section{Abstract}
     A machine learning approach was applied to the classification of articles found online. 
-    Several different machine learning algorithms were applied to a set of 8 categories. 
+    Several different machine learning algorithms (Na\"ive Bayes, Random Forest, and 
+    Support Vector Machine (SVM)) were applied to a set of 8 categories. 
     After running these models, we found that the better machine learning algorithms were 
     accurate about 95\% of the time. This project can be applied to the real world for 
     companies such as Facebook\textsuperscript{\textregistered} or 
-    Google\textsuperscript{\textregistered} when those companies try to suggest articles for a 
-    user to read.
+    Google\textsuperscript{\textregistered} when those companies try to suggest articles 
+    for a specific user to read.
 
     \section{Introduction}
-    There are many different articles in the world today (either online or printed) with many 
-    more continuously being produced. While a reader could read the articles and find out the 
-    subjects thereof, it would more effective if the user could see the topic of each article 
-    without ever having to read them. By being able to predict these topics, companies such 
-    as Facebook\textsuperscript{\textregistered} or Google\textsuperscript{\textregistered} 
-    would be able to suggest an article to specific users by looking at those users’ 
-    preferences.
+    There are many different articles in the world today (either online or printed) with many more 
+    continuously being produced. With so many articles being created, it is hard to tell if a reader 
+    will appreciate what the article is about. While it is simple enough for a reader to read and 
+    discover on their own if they like the article, it would be much easier for the reader to have an 
+    already narrowed down selection of articles that they would like to read. This can be done by 
+    suggesting articles that are of the type of information they typically read about.\\
+    \indent{With how much data there is in the world, companies such as 
+    Facebook\textsuperscript{\textregistered} or Google\textsuperscript{\textregistered} already know 
+    what a user’s interests are and can suggest things that the user will likely find interesting. By 
+    using a classifier on new articles, companies would be able to give classification to these 
+    articles and recommend the articles to user based on the prevalent subjects of the paper. This 
+    would be useful for these companies as it would be able to get users to come back to their sites 
+    more often as the users want to get more articles that they know are already interesting for them.
+    In this project, we attempt to classify new articles from online. This was done by using 3 
+    different machine learning algorithms. Initially, the first results that were seen were very 
+    promising, with most of the accuracies being 88\% or more. After this success was seen, we 
+    attempted to further improve the accuracy by changing parameters to fine tune the learning models. 
+    After finding good parameters, the best result that was seen was produced by the Support Vector 
+    Machine (SVM) with a final accuracy of about 95\%.}
     
     \section{Methods and Data}
         \subsection{Data Sources}
@@ -66,7 +70,7 @@
         because these values are normalized to the length of the document. In other words, longer 
         documents are not favored over shorter documents.
 
-        \subsection{Data Instance}
+        \subsection{Data Instance Example}
         A data instance in the data set would look something like the following example, where 
         word1, ..., wordn represent the inverse document frequency values for the words in the 
         relevant article.
@@ -85,13 +89,13 @@
             learning the input data, it then takes in unknown data and determines the probability 
             of being an output class based upon the probability of those values showing up in the 
             classes it was trained upon.
+            \includegraphics[width=9cm]{graphs/Naïve_Bayes_description}
+            \footnote{http://www.saedsayad.com/naive\_bayesian.htm}
             \subsubsection{Random Forest}
             Random Forest is an example of an ensemble algorithm, combining several learning 
-            models which could contain only the same or different kinds of algorithms. Each model 
-            votes on what the output should be, and the result is chosen taken those votes in 
-            consideration. The Random Forest Classifier creates several decision trees from 
-            randomly selected subsets of the training set. After each tree has voted, it 
-            aggregates those votes and decides on the final class of the input in consideration.
+            models which could contain the same kind or different kinds of machine learning algorithms. Each machine learning model votes on what the output should be, and the result is chosen by taking the most popular of those votes. The Random Forest Classifier creates several decision trees from randomly selected subsets of the training data. After each decision tree has voted, Random Forest aggregates those votes and decides on the final class of the input in consideration.
+            \includegraphics[width=9cm]{graphs/Random_Forest_description}
+            \footnote{http://www.globalsoftwaresupport.com/random-forest-classifier-bagging-machine-learning/}
             \subsubsection{Support Vector Machine (SVM)}
             The Support Vector Machine (SVM) is a classifier that fits a line to the given data 
             similar to the way that a perceptron classifier does. The main difference between 
@@ -105,6 +109,8 @@
             support vectors, which is where the algorithm gets its name. For multi-class 
             classification the algorithm trains several lines to separate the different classes, 
             and then uses these lines to determine what class new data belongs to.
+            \includegraphics[width=7cm]{graphs/SVM_description}
+            \footnote{https://aitrends.com/ai-insider/support-vector-machines-svm-ai-self-driving-cars/}
         
     \section{Initial Results}
         \subsection{Na\"ive Bayes}
@@ -146,6 +152,7 @@
                 \hline
             \end{tabular}
         \end{center}
+        \includegraphics[width=9cm]{graphs/SVM_comparison}
         The linear model vastly outperformed the others. This is most likely because different 
         articles had word frequency values that strongly correlated with their subject, and so 
         the word vectors plotted in vector were linearly separable. The other models had 
@@ -190,11 +197,8 @@
                 \hline
             \end{tabular}
         \end{center}
-        If the smoothing rate was too low or too high, the accuracy dropped. This happened because 
-        the smoothing level tries to cancel out any noise that appears in the training data. By 
-        having a bad smoothing level, the distributions provided worse probabilities of words 
-        appearing in an article. It should be noted that the smoothing parameter would likely 
-        have to be changed for different training sets.
+        \includegraphics[width=9cm]{graphs/Naive_Bayes_comparison}
+        In the graph, we can see that when the smoothing rate is too high or too low, the accuracy decreased. When the smoothing rate is too low, the probability distribution tries to overfit the training data that it has seen. When the smoothing rate is too high, the probability distribution loses some information about the probabilities and tries to treat values too similar to other numbers. As the graph also shows, the multinomial and bernoulli distributions were affected the same by the smoothing rate. This was expected since only the data was trying to be smoothed out and the distribution itself was still modeling the values given to it. In other words, both distributions reacted the same because missing data was trying to be filled in.
         \subsection{Random Forest}
         Using Scikit-Learn’s Random Search algorithm, we were able to train the model using 
         several combinations of values for the parameters mentioned above in order to improve the 
@@ -251,6 +255,7 @@
         only see a significant drop in accuracy at very high levels of C. On the other hand, we 
         see a significant drop between a C of 1 and a C of .1. This is likely due to the program 
         trying to generalize too much and allowing for too many exceptions.\\
+        \includegraphics[width=9cm]{graphs/C_versus_accuracy}
         \indent{A second parameter that we tested was the shape of the decision functions, which 
         determines how many lines the SVM algorithm uses to separate the data. The two values for 
         this parameter are One vs One (OvO) and One vs Rest (OvR). One vs One trains a separate 
@@ -267,6 +272,7 @@
                 \hline
             \end{tabular}
         \end{center}
+        \includegraphics[width=9cm]{graphs/OvO_OvR}
         There is little difference between the results for these two parameters, but One vs Rest 
         did do better by a small margin. This could be due to simple chance since the accuracies 
         are so close, but it could also have to do with ambiguity between individual classes that 
@@ -294,5 +300,4 @@
     classification. We would also like to expand our dataset to include satirical articles of each 
     original classification to see if the algorithms could successfully determine between "fake" 
     news and actual articles.
-    \end{multicols}
 \end{document}
